@@ -10,6 +10,7 @@ public class ShapeSettingsUpdate : MonoBehaviour
     //then loop through the list and set the shape settings to the parent object
     [SerializeField] ShapeRenderer shapeRenderer;
     public int renderQueueTest;
+    public int refTest;
     public Transform[] siblingsTest;
     [ContextMenu(nameof(UpdateShapeSettings))]
     public void UpdateShapeSettings() {
@@ -24,7 +25,7 @@ public class ShapeSettingsUpdate : MonoBehaviour
         foreach (Transform sibling in siblings) {
             ShapeMaskSetting shapeMaskSetting = sibling.GetComponent<ShapeMaskSetting>();
             if (shapeMaskSetting != null) { renderQueueTest = shapeMaskSetting.material.renderQueue; }
-            //var v2 = sibling.GetComponent<ShapeMaskSetting>().material.;  
+            if (shapeMaskSetting != null) { var someFLoat = shapeMaskSetting.material.GetFloat("_StencilRef"); }
         }
     }
 
